@@ -1,4 +1,4 @@
-export function resizeListener(game)
+export function listenWindowResize(game)
 {
     window.addEventListener('resize', () => {
         // Adapter la taille du renderer à la nouvelle taille de la fenêtre

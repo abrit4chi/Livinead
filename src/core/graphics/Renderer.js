@@ -5,6 +5,12 @@ export class Renderer {
         this.game = game;
         this.THREE = this.game.THREE;
 
+        // Instruction(s)
+        this.createRenderer();
+    }
+
+    createRenderer()
+    {
         // Instance(s)
         this.renderer = new this.THREE.WebGLRenderer();
 

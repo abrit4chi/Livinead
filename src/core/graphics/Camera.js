@@ -5,6 +5,12 @@ export class Camera {
         this.game = game;
         this.THREE = this.game.THREE;
 
+        // Instruction(s)
+        this.createCamera();
+    }
+
+    createCamera()
+    {
         // Instance(s)
         this.camera = new this.THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 150);
         
