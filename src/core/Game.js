@@ -11,6 +11,9 @@ import { listenWindowResize } from './graphics/listenWindowResize';
 // Import /Map
 import { Map } from '../map/Map';
 
+// Import /Entities
+import { Player } from '../entities/player/Player';
+
 export class Game {
     constructor()
     {
@@ -23,6 +26,7 @@ export class Game {
         this.renderer = new Renderer(this);
         this.animator = new Animator(this);
         this.map = new Map(this);
+        this.player = new Player(this);
 
         // Instruction(s)
         this.animator.animate(this);
