@@ -14,6 +14,7 @@ export class PlayerMovement {
         this.getCurrentDirectionGazePlayer();
         this.getRightSideCurrentDirectionGaze();
         this.move();
+        this.jump();
     }
 
     getCurrentDirectionGazePlayer()
@@ -53,6 +54,15 @@ export class PlayerMovement {
         {
             this.playerBody.velocity.x -= this.playerState.rightSideCurrentDirectionGaze.x * this.playerState.moveSpeed;
             this.playerBody.velocity.z -= this.playerState.rightSideCurrentDirectionGaze.z * this.playerState.moveSpeed;
+        }
+    }
+
+    jump()
+    {
+        if (this.playerState.jump && this.playerBody.position.y <= 1)
+        {
+            this.playerBody.velocity.y += this.playerState.jumpForce;
+            this.playerState.jump = false;
         }
     }
 }

@@ -3,6 +3,7 @@ import { PlayerState } from "./components/PlayerState";
 import { PlayerControl } from "./components/PlayerControl";
 import { PlayerMovement } from "./components/PlayerMovement";
 import { PlayerBody } from "./components/PlayerBody";
+import { PlayerSound } from "./components/PlayerSound";
 
 export class Player {
     constructor(game) 
@@ -14,12 +15,14 @@ export class Player {
         this.playerCameraController = new PlayerCameraController(this);
         this.playerBody = new PlayerBody(this);
         this.playerState = new PlayerState(this);
+        this.playerSound = new PlayerSound(this);
         this.playerControl = new PlayerControl(this);
         this.playerMovement = new PlayerMovement(this);
     }
 
     update()
     {
+        this.playerSound.update();
         this.playerMovement.update();
     }
 }
