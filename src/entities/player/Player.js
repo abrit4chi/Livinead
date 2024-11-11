@@ -2,6 +2,7 @@ import { PlayerCameraController } from "./components/PlayerCameraController";
 import { PlayerState } from "./components/PlayerState";
 import { PlayerControl } from "./components/PlayerControl";
 import { PlayerMovement } from "./components/PlayerMovement";
+import { PlayerBody } from "./components/PlayerBody";
 
 export class Player {
     constructor(game) 
@@ -11,6 +12,7 @@ export class Player {
         
         // Instance(s)
         this.playerCameraController = new PlayerCameraController(this);
+        this.playerBody = new PlayerBody(this);
         this.playerState = new PlayerState(this);
         this.playerControl = new PlayerControl(this);
         this.playerMovement = new PlayerMovement(this);
