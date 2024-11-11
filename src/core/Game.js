@@ -33,5 +33,6 @@ export class Game {
         // Instruction(s)
         this.animator.animate(this);
         listenWindowResize(this);
+        this.scene.scene.add(this.camera.camera);
     }
 }
