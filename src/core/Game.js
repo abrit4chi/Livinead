@@ -2,12 +2,12 @@ import * as THREE from 'three';
 import * as CANNON from 'cannon-es';
 
 // Import /Core
-import { Scene } from './graphics/Scene';
-import { Camera } from './graphics/Camera';
-import { Renderer } from './graphics/Renderer';
+import { Scene } from './components/graphics/Scene';
+import { Camera } from './components/graphics/Camera';
+import { Renderer } from './components/graphics/Renderer';
 import { Animator } from './Animator';
-import { listenWindowResize } from './graphics/listenWindowResize';
-import { AudioManager } from './audio/AudioManager';
+import { listenWindowResize } from './components/graphics/listenWindowResize';
+import { AudioManager } from './components/audio/AudioManager';
 
 // Import /Map
 import { Map } from '../map/Map';

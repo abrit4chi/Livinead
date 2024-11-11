@@ -1,6 +1,6 @@
-import { Objects } from "./objects/Objects";
+import { Objects } from "./components/objects/Objects";
 import { World } from "../physics/World";
-import { Lights } from "./lights/Lights";
+import { Lights } from "./components/lights/Lights";
 
 export class Map {
     constructor(game) 

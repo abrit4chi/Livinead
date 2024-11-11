@@ -13,6 +13,7 @@ export class PlayerControl {
     {
         this.moveControl();
         this.jumpControl();
+        this.aimControl();
     }
 
     moveControl()
@@ -64,6 +65,23 @@ export class PlayerControl {
             if (event.code == "Space")
             {
                 this.playerState.jump = true;
+            }
+        })
+    }
+
+    aimControl()
+    {
+        document.addEventListener('mousedown', (event) =>{
+            if (event.button == 2)
+            {
+                this.playerState.aim = true;
+            }
+        })
+
+        document.addEventListener('mouseup', (event) =>{
+            if (event.button == 2)
+            {
+                this.playerState.aim = false;
             }
         })
     }

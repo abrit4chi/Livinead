@@ -9,4 +9,9 @@ export class PlayerWeapon {
         // Instance(s)
         this.currentWeapon = new Glock(this);
     }
+
+    update()
+    {
+        this.currentWeapon.update();
+    }
 }

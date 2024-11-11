@@ -4,6 +4,7 @@ export class PlayerSound {
         // Propriétés de l'instance
         this.player = player;
         this.playerState = this.player.playerState;
+        this.playerBody = this.player.playerBody.body;
         this.audioManager = this.player.game.audioManager;
 
         // Instruction(s)
@@ -17,9 +18,16 @@ export class PlayerSound {
 
     moveSound()
     {
-        if (this.playerState.moveForward || this.playerState.moveBackward || this.playerState.moveRight || this.playerState.moveLeft )
+        if (this.playerState.moveForward || this.playerState.moveBackward || this.playerState.moveRight || this.playerState.moveLeft)
         {
-            this.audioManager.playSound('footstep');
+            if (this.playerBody.position.y <= 1)
+            {
+                this.audioManager.playSound('footstep');
+            }
+            else 
+            {
+                this.audioManager.stopSound('footstep');
+            }
         }
         else 
         {
