@@ -6,6 +6,7 @@ export class Animator {
         this.scene = this.game.scene.scene;
         this.camera = this.game.camera.camera;
         this.renderer = this.game.renderer.renderer;
+        this.player = this.game.player;
 
         // Instruction(s)
         this.animate = this.animate.bind(this);
@@ -15,6 +16,9 @@ export class Animator {
     {
         // Boucle d'animation
         requestAnimationFrame(this.animate);
+
+        // Le joueur
+        this.player.update();
 
         // Le rendu
         this.renderer.render(this.scene, this.camera);

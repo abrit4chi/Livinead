@@ -24,9 +24,9 @@ export class Game {
         this.scene = new Scene(this);
         this.camera = new Camera(this);
         this.renderer = new Renderer(this);
-        this.animator = new Animator(this);
         this.map = new Map(this);
         this.player = new Player(this);
+        this.animator = new Animator(this);
 
         // Instruction(s)
         this.animator.animate(this);
