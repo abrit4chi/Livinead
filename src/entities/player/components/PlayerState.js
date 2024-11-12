@@ -13,6 +13,7 @@ export class PlayerState {
         this.jump = false;
 
         this.aim = false;
+        this.reload = false;
 
         // Attributs physiques
         this.moveSpeed = 15;

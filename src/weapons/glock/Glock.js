@@ -1,6 +1,4 @@
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
-import { GlockInteraction } from './components/GlockInteraction';
-import { GlockSound } from './components/GlockSound';
 import { GlockAnimation } from './components/GlockAnimation';
 
 export class Glock {
@@ -12,8 +10,6 @@ export class Glock {
 
         // Instance(s)
         this.loaderModel = new GLTFLoader();
-        this.glockInteraction = new GlockInteraction(this);
-        this.glockSound = new GlockSound(this);
         this.glockAnimation = new GlockAnimation(this);
 
         // Instruction(s)
@@ -40,8 +36,6 @@ export class Glock {
 
     update()
     {
-        this.glockInteraction.update();
-        this.glockSound.update();
         this.glockAnimation.update();
     }
 }
