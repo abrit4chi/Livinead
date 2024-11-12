@@ -15,6 +15,7 @@ export class PlayerControl {
         this.jumpControl();
         this.aimControl();
         this.reloadControl();
+        this.shootControl();
     }
 
     moveControl()
@@ -93,6 +94,23 @@ export class PlayerControl {
             if (event.code == "KeyR")
             {
                 this.playerState.reload = true;
+            }
+        })
+    }
+
+    shootControl()
+    {
+        document.addEventListener('mousedown', (event) => {
+            if (event.button == 0)
+            {
+                this.playerState.shoot = true;
+            }
+        })
+
+        document.addEventListener('mouseup', (event) => {
+            if (event.button == 0)
+            {
+                this.playerState.shoot = false;
             }
         })
     }

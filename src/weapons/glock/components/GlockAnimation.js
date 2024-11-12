@@ -34,6 +34,7 @@ export class GlockAnimation {
     {
         this.updateMixer();
         this.aimAnimation();
+        this.shootAnimation();
         this.reloadAnimation();
         this.glockSound.update();
     }
@@ -60,13 +61,32 @@ export class GlockAnimation {
         }
     }
 
+    shootAnimation()
+    {
+        const animation = this.animations['Armature|Shoot'];
+        const animationReload = this.animations['Armature|Reload'];
+        
+        if (this.playerState.shoot)
+        {
+            if (!animation.isRunning() && !animationReload.isRunning())
+            {
+                // Paramètres de l'animation
+                animation.reset();
+                animation.setLoop(this.THREE.LoopOnce);
+                animation.play();
+            }
+
+        }
+    }
+
     reloadAnimation()
     {
         const animation = this.animations['Armature|Reload'];
+        const animationShoot = this.animations['Armature|Shoot'];
         
         if (this.playerState.reload)
         {
-            if (!animation.isRunning())
+            if (!animation.isRunning() && !animationShoot.isRunning())
             {
                 // Paramètres de l'animation
                 animation.reset();

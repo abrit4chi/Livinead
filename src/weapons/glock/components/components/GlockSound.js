@@ -10,15 +10,16 @@ export class GlockSound {
         // Charger les sons
         this.audioManager.loadSound('aimGlock', '../../../../assets/sounds/weapons/glock/aim.mp3', false, false, 0.02, 1);
         this.audioManager.loadSound('reloadGlock', '../../../../assets/sounds/weapons/glock/reload.mp3', false, false, 0.1, 1.1);
-            
+        this.audioManager.loadSound('shootGlock', '../../../../assets/sounds/weapons/glock/shoot.mp3', false, false, 0.15, 0.9);
+
         // Drapeau(x) pour les sons
         this.aimSoundFlag = false;
-        this.reloadSoundFlag = false;
     }
 
     update()
     {
         this.aimSound();
+        this.shootSound();
         this.reloadSound();
     }
 
@@ -34,6 +35,23 @@ export class GlockSound {
             this.aimSoundFlag = false;
         }
 
+    }
+    
+    shootSound()
+    {
+        const animation = this.animations['Armature|Shoot'];
+
+        if (animation)
+        {
+            if (animation.isRunning())
+            {
+                this.audioManager.playSound('shootGlock');
+            }
+            else 
+            {
+                this.audioManager.stopSound('shootGlock');
+            }
+        }
     }
 
     reloadSound()
@@ -52,4 +70,5 @@ export class GlockSound {
             }
         }
     }
+
 }
