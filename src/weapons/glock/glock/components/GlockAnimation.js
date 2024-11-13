@@ -69,7 +69,7 @@ export class GlockAnimation {
         const animationReload = this.animations['Armature|Reload'];
         
         if (this.playerState.shoot)
-        {
+        {            
             if (!animation.isRunning() && !animationReload.isRunning())
             {
                 // Paramètres de l'animation
@@ -77,7 +77,6 @@ export class GlockAnimation {
                 animation.setLoop(this.THREE.LoopOnce);
                 animation.play();
             }
-
         }
     }
 

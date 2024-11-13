@@ -9,9 +9,6 @@ export class GlockInteraction {
 
         // Donnée(s)
         this.bullets = [];
-
-        // Drapeau pour la balle
-        this.bulletFlag = false;
     }
 
     update()
@@ -20,21 +17,23 @@ export class GlockInteraction {
         this.bullets.forEach((bullet) => bullet.update());
     }
 
-    shootInteraction()
-    {
+    shootInteraction() {
         const animation = this.animations['Armature|Shoot'];
-        
-        if (animation)
+    
+        if (animation) 
         {
-            if (this.animations['Armature|Shoot'].isRunning() && !this.bulletFlag)
+            if (animation.isRunning()) 
             {
-                this.glockBullet = new GlockBullet(this);
-                this.bullets.push(this.glockBullet);
-                this.bulletFlag = true;
-            }
-            else if (!this.animations['Armature|Shoot'].isRunning())
+                if (this.lastShotTime === undefined || Date.now() - this.lastShotTime > 500) 
+                {
+                    this.glockBullet = new GlockBullet(this);
+                    this.bullets.push(this.glockBullet);
+                    this.lastShotTime = Date.now(); 
+                }
+            } 
+            else 
             {
-                this.bulletFlag = false;
+                this.lastShotTime = undefined;
             }
         }
     }

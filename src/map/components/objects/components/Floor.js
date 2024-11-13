@@ -11,39 +11,38 @@ export class Floor {
         // Paramètre(s)
         this.width = 10;
         this.height = 10;
-        this.mass = 0;
 
         // Instruction(s)
         this.createVisualFloor();
         this.createFloorBody();
     }
 
+    update()
+    {
+        this.mesh.position.copy(this.body.position);
+    }
+
     createVisualFloor()
     {
         const geometry = new this.THREE.PlaneGeometry(this.width, this.height);
         const material = new this.THREE.MeshBasicMaterial();
+        this.mesh = new this.THREE.Mesh(geometry, material);
 
-        // Le mesh est utilisé pour créer un objet 3D à partir d'une géométrie
-        // et d'un matériau.
-        const mesh = new this.THREE.Mesh(geometry, material);
+        this.mesh.rotation.x = -Math.PI / 2;
 
-        // Rotation pour que le sol soit horizontal et position pour que le sol soit synchronisé avec le corps physique du sol
-        mesh.rotation.x = -Math.PI / 2;
-
-        this.scene.add(mesh);
+        this.scene.add(this.mesh);
     }
 
     createFloorBody()
     {
-        const body = new this.CANNON.Body({
-            mass: this.mass,
+        this.body = new this.CANNON.Body({
+            type: this.CANNON.Body.STATIC,
             shape: new this.CANNON.Plane()
         });
 
-        // Rotation pour que le sol soit horizontal
-        body.quaternion.setFromEuler(-Math.PI / 2, 0, 0);
+        this.body.quaternion.setFromEuler(-Math.PI / 2, 0, 0);
 
-        this.world.addBody(body);
+        this.world.addBody(this.body);
     }
 }
 
