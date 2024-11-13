@@ -7,6 +7,7 @@ export class Glock {
         // Propriétés de l'instance
         this.playerWeapon = playerWeapon;
         this.camera = this.playerWeapon.player.game.camera.camera;
+        this.THREE = this.playerWeapon.player.game.THREE;
 
         // Instance(s)
         this.loaderModel = new GLTFLoader();
@@ -37,5 +38,15 @@ export class Glock {
     update()
     {
         this.glockAnimation.update();
+    }
+
+    getGlockCurrentPositionWorld()
+    {
+        return this.glock.getWorldPosition(new this.THREE.Vector3());
+    }
+
+    getGlockCurrentDirectionWorld()
+    {
+        return this.glock.getWorldDirection(new this.THREE.Vector3());
     }
 }

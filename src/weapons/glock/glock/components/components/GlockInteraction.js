@@ -26,8 +26,7 @@ export class GlockInteraction {
             {
                 if (this.lastShotTime === undefined || Date.now() - this.lastShotTime > 500) 
                 {
-                    this.glockBullet = new GlockBullet(this);
-                    this.bullets.push(this.glockBullet);
+                    this.bullets.push(new GlockBullet(this));
                     this.lastShotTime = Date.now(); 
                 }
             } 

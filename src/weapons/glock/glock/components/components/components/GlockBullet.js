@@ -24,7 +24,7 @@ export class GlockBullet {
             
             // Le modèle 3D
             this.bullet = gltf.scene;
-            // this.bullet.scale.set(0.25, 0.25, 0.25);
+            this.bullet.scale.set(0.25, 0.25, 0.25);
 
             // Avoir le rayon du modèle
             this.getBulletRadius();
