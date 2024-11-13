@@ -1,5 +1,6 @@
 import { Clock } from 'three';
 import { GlockSound } from './components/GlockSound';
+import { GlockInteraction } from './components/GlockInteraction';
 
 export class GlockAnimation {
     constructor(glock) 
@@ -8,7 +9,6 @@ export class GlockAnimation {
         this.glock = glock;
         this.THREE = this.glock.playerWeapon.player.game.THREE;
         this.playerState = this.glock.playerWeapon.player.playerState;
-        this.audioManager = this.glock.playerWeapon.player.game.audioManager;
            
         // Donnée(s)
         this.mixer = null; 
@@ -17,6 +17,7 @@ export class GlockAnimation {
         // Instance(s)
         this.clock = new Clock();
         this.glockSound = new GlockSound(this);
+        this.GlockInteraction = new GlockInteraction(this);
     }
 
     loadAnimations(animations)
@@ -37,6 +38,7 @@ export class GlockAnimation {
         this.shootAnimation();
         this.reloadAnimation();
         this.glockSound.update();
+        this.GlockInteraction.update();
     }
 
     updateMixer()

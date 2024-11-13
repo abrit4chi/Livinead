@@ -1,4 +1,4 @@
-import { Glock } from '../../../weapons/glock/Glock';
+import { Glock } from '../../../weapons/glock/glock/Glock';
 
 export class PlayerWeapon {
     constructor(player) 

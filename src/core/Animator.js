@@ -23,7 +23,7 @@ export class Animator {
 
         // Le joueur
         this.player.update();
-
+        
         // La caméra
         this.camera.update();
 

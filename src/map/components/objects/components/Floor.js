@@ -27,7 +27,7 @@ export class Floor {
         // et d'un matériau.
         const mesh = new this.THREE.Mesh(geometry, material);
 
-        // Rotation pour que le sol soit horizontal
+        // Rotation pour que le sol soit horizontal et position pour que le sol soit synchronisé avec le corps physique du sol
         mesh.rotation.x = -Math.PI / 2;
 
         this.scene.add(mesh);
