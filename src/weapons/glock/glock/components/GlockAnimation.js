@@ -1,6 +1,6 @@
 import { Clock } from 'three';
-import { GlockSound } from './components/GlockSound';
-import { GlockInteraction } from './components/GlockInteraction';
+import { GlockSound } from './GlockSound';
+import { GlockInteraction } from './GlockInteraction';
 
 export class GlockAnimation {
     constructor(glock) 

@@ -17,11 +17,6 @@ export class Floor {
         this.createFloorBody();
     }
 
-    update()
-    {
-        this.mesh.position.copy(this.body.position);
-    }
-
     createVisualFloor()
     {
         const geometry = new this.THREE.PlaneGeometry(this.width, this.height);
