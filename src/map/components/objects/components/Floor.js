@@ -24,6 +24,7 @@ export class Floor {
         this.mesh = new this.THREE.Mesh(geometry, material);
 
         this.mesh.rotation.x = -Math.PI / 2;
+        this.mesh.name = "Floor";
 
         this.scene.add(this.mesh);
     }
@@ -36,6 +37,7 @@ export class Floor {
         });
 
         this.body.quaternion.setFromEuler(-Math.PI / 2, 0, 0);
+        this.mesh.name = "Floor";
 
         this.world.addBody(this.body);
     }

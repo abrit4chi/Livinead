@@ -1,6 +1,5 @@
 import { Clock } from 'three';
 import { GlockSound } from './GlockSound';
-import { GlockInteraction } from './GlockInteraction';
 
 export class GlockAnimation {
     constructor(glock) 
@@ -17,7 +16,6 @@ export class GlockAnimation {
         // Instance(s)
         this.clock = new Clock();
         this.glockSound = new GlockSound(this);
-        this.GlockInteraction = new GlockInteraction(this);
     }
 
     loadAnimations(animations)
@@ -38,7 +36,6 @@ export class GlockAnimation {
         this.shootAnimation();
         this.reloadAnimation();
         this.glockSound.update();
-        this.GlockInteraction.update();
     }
 
     updateMixer()

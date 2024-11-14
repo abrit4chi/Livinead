@@ -1,5 +1,6 @@
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { GlockAnimation } from './components/GlockAnimation';
+import { GlockRaycasting } from './components/GlockRaycasting';
 
 export class Glock {
     constructor(playerWeapon)
@@ -12,6 +13,7 @@ export class Glock {
         // Instance(s)
         this.loaderModel = new GLTFLoader();
         this.glockAnimation = new GlockAnimation(this);
+        this.glockRaycasting = new GlockRaycasting(this);
 
         // Instruction(s)
         this.loadGlockModel();
@@ -30,14 +32,18 @@ export class Glock {
             // Ajouter en tant qu'enfant à la caméra
             this.camera.add(this.glock);
 
-            // Charger les animations
+            // Charger les animations et le raycaster du Glock
             this.glockAnimation.loadAnimations(gltf.animations);
         })
     }
 
     update()
     {
-        this.glockAnimation.update();
+        if (this.glock)
+        {
+            this.glockAnimation.update();
+            this.glockRaycasting.update();
+        }
     }
 
     getGlockCurrentPositionWorld()
