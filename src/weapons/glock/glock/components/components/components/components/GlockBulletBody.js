@@ -3,6 +3,7 @@ export class GlockBulletBody {
     {
         // Propriété(s) de l'instance
         this.glockBullet = glockBullet;
+        this.THREE = this.glockBullet.glockInteraction.glockAnimation.glock.playerWeapon.player.game.THREE;
         this.CANNON = this.glockBullet.glockInteraction.glockAnimation.glock.playerWeapon.player.game.CANNON;
         this.world = this.glockBullet.glockInteraction.glockAnimation.glock.playerWeapon.player.game.map.world.world;
         this.currentDirectionGaze = this.glockBullet.glockInteraction.glockAnimation.glock.playerWeapon.player.playerState.currentDirectionGaze;
@@ -15,16 +16,15 @@ export class GlockBulletBody {
 
     createBulletBody()
     {
-        // Le corps physique de la balle
         this.body = new this.CANNON.Body({
-            mass: 0,
-            // shape: new this.CANNON.Sphere(0)
-        })
+            mass: 0
+        });
 
-        // La position du corps physique de la balle à sa création
-        this.body.position.set(this.getGlockCurrentPositionWorld.x + 0.368, this.getGlockCurrentPositionWorld.y + 0.135, this.getGlockCurrentPositionWorld.z - 0.6);
+        // Placer la balle devant le glock et dans la direction où il regarde
+        const bulletPosition = new this.THREE.Vector3();
+        bulletPosition.copy(this.getGlockCurrentPositionWorld.add(this.getGlockCurrentDirectionWorld.clone().multiplyScalar(0.368)));
+        this.body.position.set(bulletPosition.x, bulletPosition.y + 0.14, bulletPosition.z);
 
-        // Ajouter le corps physique au monde
         this.world.addBody(this.body);
-    }   
+    }
 }
