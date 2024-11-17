@@ -20,6 +20,7 @@ export class PlayerWeaponAnimation {
     update()
     {
         this.updateMixer();
+        this.idleAnimation();
         this.aimAnimation();
         this.shootAnimation();
         this.reloadAnimation();
@@ -40,6 +41,32 @@ export class PlayerWeaponAnimation {
     {
         if (this.mixer) {
             this.mixer.update(this.clock.getDelta());
+        }
+    }
+
+    idleAnimation() 
+    {    
+        const animation = this.animations['Armature|Idle'];
+        const animationReload = this.animations['Armature|Reload'];
+        const animationShoot = this.animations['Armature|Shoot'];
+    
+        if (!animationReload.isRunning() && !animationShoot.isRunning()) 
+        {
+            if (!animation.isRunning()) 
+            {
+                Object.values(this.animations).forEach((otherAnimation) => 
+                {
+                    if (otherAnimation !== animation) 
+                    {
+                        otherAnimation.crossFadeTo(animation, 1, false);
+                    }
+                });
+                animation.play();
+            }
+        } 
+        else 
+        {
+            animation.stop();
         }
     }
 
