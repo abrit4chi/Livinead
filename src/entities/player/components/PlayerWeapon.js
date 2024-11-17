@@ -1,4 +1,6 @@
 import { Glock } from '../../../weapons/glock/glock/Glock';
+import { PlayerWeaponAnimation } from './PlayerWeaponAnimation';
+import { PlayerWeaponSound } from './PlayerWeaponSound';
 
 export class PlayerWeapon {
     constructor(player) 
@@ -8,10 +10,19 @@ export class PlayerWeapon {
 
         // Instance(s)
         this.currentWeapon = new Glock(this);
+        this.playerWeaponAnimation = new PlayerWeaponAnimation(this);
+        this.playerWeaponSound = new PlayerWeaponSound(this);
+        
+        // Instruction(s)
+        this.currentWeapon.loadWeaponModel();
     }
 
     update()
     {
-        this.currentWeapon.update();
+        if (this.currentWeapon.weapon)
+        {
+            this.playerWeaponAnimation.update();
+            this.playerWeaponSound.update();
+        }
     }
 }

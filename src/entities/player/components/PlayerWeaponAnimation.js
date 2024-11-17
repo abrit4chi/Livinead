@@ -1,32 +1,20 @@
 import { Clock } from 'three';
-import { GlockSound } from './GlockSound';
 
-export class GlockAnimation {
-    constructor(glock) 
+export class PlayerWeaponAnimation {
+    constructor(playerWeapon) 
     {
-        // Propriétés de l'instance
-        this.glock = glock;
-        this.THREE = this.glock.playerWeapon.player.game.THREE;
-        this.playerState = this.glock.playerWeapon.player.playerState;
-           
-        // Donnée(s)
+        // Propriété(s) de l'instance
+        this.playerWeapon = playerWeapon;
+        this.THREE = this.playerWeapon.player.game.THREE;
+        this.playerState = this.playerWeapon.player.playerState;
+        this.weapon = this.playerWeapon.currentWeapon;
+
+        // Propriété(s)
         this.mixer = null; 
         this.animations = {};
-        
+
         // Instance(s)
         this.clock = new Clock();
-        this.glockSound = new GlockSound(this);
-    }
-
-    loadAnimations(animations)
-    {
-        this.mixer = new this.THREE.AnimationMixer(this.glock.glock);
-
-        // Enregistrer toutes les animations
-        animations.forEach((clip) => {
-            const action = this.mixer.clipAction(clip);
-            this.animations[clip.name] = action;
-        });
     }
 
     update()
@@ -35,7 +23,17 @@ export class GlockAnimation {
         this.aimAnimation();
         this.shootAnimation();
         this.reloadAnimation();
-        this.glockSound.update();
+    }
+
+    loadAnimations(animations)
+    {
+        this.mixer = new this.THREE.AnimationMixer(this.weapon.weapon);
+
+        // Enregistrer toutes les animations
+        animations.forEach((clip) => {
+            const action = this.mixer.clipAction(clip);
+            this.animations[clip.name] = action;
+        });
     }
 
     updateMixer()
@@ -47,16 +45,13 @@ export class GlockAnimation {
 
     aimAnimation()
     {
-        if (this.glock.glock)
+        if (this.playerState.aim)
         {
-            if (this.playerState.aim)
-            {
-                this.glock.glock.position.set(-0.366, -0.2212, -0.35);
-            }
-            else 
-            {
-                this.glock.glock.position.set(-0.2, -0.3, -0.35);
-            }
+            this.weapon.weapon.position.set(this.weapon.aimPositionData[0], this.weapon.aimPositionData[1], this.weapon.aimPositionData[2]);
+        }
+        else 
+        {
+            this.weapon.weapon.position.set(this.weapon.idlePositionData[0], this.weapon.idlePositionData[1], this.weapon.idlePositionData[2]);
         }
     }
 
