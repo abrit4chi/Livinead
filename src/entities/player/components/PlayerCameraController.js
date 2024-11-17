@@ -7,12 +7,13 @@ export class PlayerCameraController {
         this.player = player;
         this.camera = this.player.game.camera.camera;
         this.renderer = this.player.game.renderer.renderer;
+        this.THREE = this.player.game.THREE;
 
         // Instruction(s)
-        this.createCameraController();
+        this.createPlayerCameraController();
     }
 
-    createCameraController()
+    createPlayerCameraController()
     {
         // Instance(s)
         this.cameraController = new PointerLockControls(this.camera, this.renderer.domElement);
@@ -21,5 +22,13 @@ export class PlayerCameraController {
         document.addEventListener('click', () => {
             this.cameraController.lock();
         });
+    }
+
+    getPlayerCameraDirection()
+    {
+        const direction = new this.THREE.Vector3();
+        this.camera.getWorldDirection(direction);
+
+        return direction;
     }
 }

@@ -51,7 +51,7 @@ export class GlockAnimation {
         {
             if (this.playerState.aim)
             {
-                this.glock.glock.position.set(-0.366, -0.23, -0.35);
+                this.glock.glock.position.set(-0.366, -0.2212, -0.35);
             }
             else 
             {

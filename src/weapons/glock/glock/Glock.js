@@ -1,6 +1,5 @@
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { GlockAnimation } from './components/GlockAnimation';
-import { GlockRaycasting } from './components/GlockRaycasting';
 
 export class Glock {
     constructor(playerWeapon)
@@ -13,15 +12,22 @@ export class Glock {
         // Instance(s)
         this.loaderModel = new GLTFLoader();
         this.glockAnimation = new GlockAnimation(this);
-        this.glockRaycasting = new GlockRaycasting(this);
 
         // Instruction(s)
         this.loadGlockModel();
     }
 
+    update()
+    {
+        if (this.glock)
+        {
+            this.glockAnimation.update();
+        }
+    }
+    
     loadGlockModel()
     {
-        this.loaderModel.load('../../../assets/models/weapons/glock.glb', (gltf) => {
+        this.loaderModel.load('../../../assets/models/weapons/glock/glock.glb', (gltf) => {
             this.glock = gltf.scene;
 
             // Echelle, position et rotation de l'arme
@@ -37,14 +43,6 @@ export class Glock {
         })
     }
 
-    update()
-    {
-        if (this.glock)
-        {
-            this.glockAnimation.update();
-            this.glockRaycasting.update();
-        }
-    }
 
     getGlockCurrentPositionWorld()
     {

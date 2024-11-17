@@ -9,6 +9,12 @@ export class Camera {
         this.createCamera();
     }
 
+    
+    update()
+    {
+        this.camera.position.copy(this.game.player.playerBody.body.position)
+    }
+    
     createCamera()
     {
         // Instance(s)
@@ -16,10 +22,5 @@ export class Camera {
         
         // Instruction(s)
         this.camera.position.set(0, 1, 0);
-    }
-
-    update()
-    {
-        this.camera.position.copy(this.game.player.playerBody.body.position)
     }
 }

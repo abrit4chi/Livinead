@@ -5,6 +5,7 @@ import { PlayerMovement } from "./components/PlayerMovement";
 import { PlayerBody } from "./components/PlayerBody";
 import { PlayerSound } from "./components/PlayerSound";
 import { PlayerWeapon } from "./components/PlayerWeapon";
+import { PlayerRaycast } from "./components/PlayerRaycast";
 
 export class Player {
     constructor(game) 
@@ -20,6 +21,7 @@ export class Player {
         this.playerControl = new PlayerControl(this);
         this.playerMovement = new PlayerMovement(this);
         this.playerWeapon = new PlayerWeapon(this);
+        this.playerRaycast = new PlayerRaycast(this);
     }
 
     update()
