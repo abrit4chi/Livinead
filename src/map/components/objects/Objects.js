@@ -1,4 +1,5 @@
 import { Floor } from "./components/Floor";
+import { Cube } from "./components/Cube";
 
 export class Objects {
     constructor(map) 
@@ -8,5 +9,6 @@ export class Objects {
 
         // Instance(s)
         this.floor = new Floor(this);
+        this.cube = new Cube(this);
     }
 }

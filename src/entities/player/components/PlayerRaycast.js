@@ -8,7 +8,7 @@ export class PlayerRaycast {
         this.playerCameraController = this.player.playerCameraController;
     }
 
-    getCenterRaycast() {
+    getTargetRaycast() {
         // Récupérer la position actuelle du joueur et la direction dans laquelle il regarde
         const playerPosition = new this.THREE.Vector3(this.playerBody.position.x, this.playerBody.position.y, this.playerBody.position.z - 0.1);
         const playerCameraDirection = this.playerCameraController.getPlayerCameraDirection();

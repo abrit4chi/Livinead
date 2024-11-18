@@ -8,7 +8,7 @@ export class Floor {
         this.CANNON = this.objects.map.game.CANNON;
         this.world = this.objects.map.world.world;
 
-        // Paramètre(s)
+        // Propriété(s)
         this.width = 10;
         this.height = 10;
 
@@ -21,12 +21,12 @@ export class Floor {
     {
         const geometry = new this.THREE.PlaneGeometry(this.width, this.height);
         const material = new this.THREE.MeshBasicMaterial();
-        this.mesh = new this.THREE.Mesh(geometry, material);
+        const mesh = new this.THREE.Mesh(geometry, material);
 
-        this.mesh.rotation.x = -Math.PI / 2;
-        this.mesh.name = "Floor";
+        mesh.name = 'floor';
+        mesh.rotation.x = -Math.PI / 2;
 
-        this.scene.add(this.mesh);
+        this.scene.add(mesh);
     }
 
     createFloorBody()
@@ -37,7 +37,6 @@ export class Floor {
         });
 
         this.body.quaternion.setFromEuler(-Math.PI / 2, 0, 0);
-        this.mesh.name = "Floor";
 
         this.world.addBody(this.body);
     }
