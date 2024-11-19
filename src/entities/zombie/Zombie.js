@@ -1,4 +1,5 @@
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
+import { ZombieBody } from './components/ZombieBody';
 import { ZombieAnimation } from './components/ZombieAnimation';
 
 export class Zombie {
@@ -10,6 +11,7 @@ export class Zombie {
 
         // Instance(s)
         this.loaderModel = new GLTFLoader();
+        this.zombieBody = new ZombieBody(this);
         this.zombieAnimation = new ZombieAnimation(this);
 
         // Instruction(s)
@@ -37,6 +39,7 @@ export class Zombie {
     {
         if (this.zombie)
         {
+            this.zombie.position.copy(this.zombieBody.body.position)
             this.zombieAnimation.update();
         }
     }
