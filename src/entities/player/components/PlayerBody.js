@@ -15,7 +15,7 @@ export class PlayerBody {
         this.body = new this.CANNON.Body({
             mass: 1,
             shape: new this.CANNON.Sphere(1),
-            position: new this.CANNON.Vec3(0, 5, 0)
+            position: new this.CANNON.Vec3(0, 5, 10)
         })
 
         this.world.addBody(this.body);

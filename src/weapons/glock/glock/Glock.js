@@ -23,7 +23,7 @@ export class Glock {
             2: 'reloadGlock'
         };
         this.idlePositionData = [-0.2, -0.3, -0.35]
-        this.aimPositionData = [-0.366, -0.2212, -0.35]
+        this.aimPositionData = [-0.366, -0.2185, -0.30]
     }
     
     loadWeaponModel()

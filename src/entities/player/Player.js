@@ -29,5 +29,6 @@ export class Player {
         this.playerSound.update();
         this.playerMovement.update();
         this.playerWeapon.update();
+        this.playerRaycast.getTargetRaycast();
     }
 }

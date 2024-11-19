@@ -9,8 +9,8 @@ export class Floor {
         this.world = this.objects.map.world.world;
 
         // Propriété(s)
-        this.width = 10;
-        this.height = 10;
+        this.width = 100;
+        this.height = 100;
 
         // Instruction(s)
         this.createVisualFloor();

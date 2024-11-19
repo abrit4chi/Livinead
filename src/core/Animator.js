@@ -8,6 +8,7 @@ export class Animator {
         this.renderer = this.game.renderer.renderer;
         this.world = this.game.map.world.world;
         this.player = this.game.player;
+        this.zombie = this.game.zombie;
 
         // Instruction(s)
         this.animate = this.animate.bind(this);
@@ -23,6 +24,9 @@ export class Animator {
 
         // Le joueur
         this.player.update();
+
+        // Le zombie
+        this.zombie.update();
         
         // La caméra
         this.camera.update();

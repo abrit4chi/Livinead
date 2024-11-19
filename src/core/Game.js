@@ -14,6 +14,7 @@ import { Map } from '../map/Map';
 
 // Import /Entities
 import { Player } from '../entities/player/Player';
+import { Zombie } from '../entities/zombie/Zombie';
 
 export class Game {
     constructor()
@@ -28,6 +29,7 @@ export class Game {
         this.audioManager = new AudioManager(this);
         this.map = new Map(this);
         this.player = new Player(this);
+        this.zombie = new Zombie(this);
         this.animator = new Animator(this);
 
         // Instruction(s)
