@@ -4,6 +4,7 @@ export class PlayerWeaponSystem {
         // Propriété(s) de l'instance
         this.playerWeapon = playerWeapon;
         this.playerWeaponAnimation = this.playerWeapon.playerWeaponAnimation;
+        this.audioManager = this.playerWeapon.player.game.audioManager;
 
         // Drapeau(x)
         this.shootFlag = false;
@@ -24,7 +25,16 @@ export class PlayerWeaponSystem {
             {
                 if (this.lastShotTime === undefined || Date.now() - this.lastShotTime > 500) 
                 {
-                    console.log(this.playerWeapon.player.playerRaycast.getTargetRaycast())
+                    // Si c'est le zombie
+                    if (this.playerWeapon.player.playerRaycast.getTargetRaycast() == "Zombie_Cylinder")
+                    {
+                        // Créer le hitmarker
+                        this.playerWeapon.createHitCrosshair();
+
+                        // Jouer le son du hitmarker
+                        this.audioManager.playSound('hitGlock');
+                    }
+
                     this.lastShotTime = Date.now();
                 }
             }

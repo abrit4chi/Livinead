@@ -17,6 +17,7 @@ export class PlayerWeapon {
         
         // Instruction(s)
         this.currentWeapon.loadWeaponModel();
+        this.createCrosshair();
     }
 
     update()
@@ -27,5 +28,37 @@ export class PlayerWeapon {
             this.playerWeaponSound.update();
             this.playerWeaponSystem.update();
         }
+    }
+
+    createCrosshair()
+    {
+        if (!document.querySelector('.crosshair'))
+        {
+            this.crosshair = document.createElement('div');
+            this.crosshair.className = 'crosshair';
+            document.body.appendChild(this.crosshair);
+        }
+    }
+
+    removeCrosshair()
+    {
+        if (document.querySelector('.crosshair'))
+        {
+            document.querySelector('.crosshair').remove();
+        }
+    }
+
+    createHitCrosshair()
+    {
+        if (!document.querySelector('.hitCrosshair'))
+        {
+            this.hitCrosshair = document.createElement('div');
+            this.hitCrosshair.className = 'hitCrosshair';
+            document.body.appendChild(this.hitCrosshair);
+        }
+
+        setTimeout(() => {
+            if (document.querySelector('.hitCrosshair')) document.querySelector('.hitCrosshair').remove(); // Supprime le crosshair
+        }, 100);
     }
 }

@@ -14,8 +14,9 @@ export class Glock {
         // Charger les sons
         this.audioManager.loadSound('aimGlock', '../../../../assets/sounds/weapons/glock/aim.mp3', false, false, 0.02, 1);
         this.audioManager.loadSound('reloadGlock', '../../../../assets/sounds/weapons/glock/reload.mp3', false, false, 0.1, 1.1);
-        this.audioManager.loadSound('shootGlock', '../../../../assets/sounds/weapons/glock/shoot.mp3', false, false, 0.15, 0.9);
-    
+        this.audioManager.loadSound('shootGlock', '../../../../assets/sounds/weapons/glock/shoot.mp3', false, false, 0.10, 0.9);
+        this.audioManager.loadSound('hitGlock', '../../../../assets/sounds/weapons/hitmarker.mp3', false, false, 4, 1);
+
         // Propriété(s)
         this.sounds = {
             0: 'aimGlock',

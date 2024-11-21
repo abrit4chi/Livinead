@@ -50,7 +50,7 @@ export class PlayerWeaponAnimation {
         const animationReload = this.animations['Armature|Reload'];
         const animationShoot = this.animations['Armature|Shoot'];
     
-        if (!animationReload.isRunning() && !animationShoot.isRunning()) 
+        if (!animationReload.isRunning() && !animationShoot.isRunning() && !this.playerState.aim) 
         {
             if (!animation.isRunning()) 
             {
@@ -75,10 +75,12 @@ export class PlayerWeaponAnimation {
         if (this.playerState.aim)
         {
             this.weapon.weapon.position.set(this.weapon.aimPositionData[0], this.weapon.aimPositionData[1], this.weapon.aimPositionData[2]);
+            this.playerWeapon.removeCrosshair();
         }
         else 
         {
             this.weapon.weapon.position.set(this.weapon.idlePositionData[0], this.weapon.idlePositionData[1], this.weapon.idlePositionData[2]);
+            this.playerWeapon.createCrosshair();
         }
     }
 

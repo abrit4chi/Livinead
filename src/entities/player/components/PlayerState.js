@@ -17,7 +17,7 @@ export class PlayerState {
         this.shoot = false;
 
         // Attributs physiques
-        this.moveSpeed = 15;
+        this.moveSpeed = 7;
         this.jumpForce = 5;
 
         // Attributs spatiaux
