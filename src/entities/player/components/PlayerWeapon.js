@@ -32,10 +32,11 @@ export class PlayerWeapon {
 
     createCrosshair()
     {
-        if (!document.querySelector('.crosshair'))
+        if (!document.querySelector('.crosshair') && !document.querySelector('.hitCrosshair'))
         {
-            this.crosshair = document.createElement('div');
+            this.crosshair = document.createElement('img');
             this.crosshair.className = 'crosshair';
+            this.crosshair.src = './assets/images/crosshair.png';
             document.body.appendChild(this.crosshair);
         }
     }
@@ -52,13 +53,15 @@ export class PlayerWeapon {
     {
         if (!document.querySelector('.hitCrosshair'))
         {
-            this.hitCrosshair = document.createElement('div');
+            this.removeCrosshair();
+            this.hitCrosshair = document.createElement('img');
             this.hitCrosshair.className = 'hitCrosshair';
+            this.hitCrosshair.src = './assets/images/hitCrosshair.png';
             document.body.appendChild(this.hitCrosshair);
         }
 
         setTimeout(() => {
-            if (document.querySelector('.hitCrosshair')) document.querySelector('.hitCrosshair').remove(); // Supprime le crosshair
+            if (document.querySelector('.hitCrosshair')) document.querySelector('.hitCrosshair').remove();
         }, 100);
     }
 }

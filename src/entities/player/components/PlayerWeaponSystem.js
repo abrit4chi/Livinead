@@ -32,7 +32,7 @@ export class PlayerWeaponSystem {
                         this.playerWeapon.createHitCrosshair();
 
                         // Jouer le son du hitmarker
-                        this.audioManager.playSound('hitGlock');
+                        this.audioManager.playSound(this.playerWeapon.currentWeapon.sounds[3]);
                     }
 
                     this.lastShotTime = Date.now();

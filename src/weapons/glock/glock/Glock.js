@@ -21,7 +21,8 @@ export class Glock {
         this.sounds = {
             0: 'aimGlock',
             1: 'shootGlock',
-            2: 'reloadGlock'
+            2: 'reloadGlock',
+            3: 'hitGlock'
         };
         this.idlePositionData = [-0.2, -0.3, -0.35]
         this.aimPositionData = [-0.366, -0.2185, -0.30]

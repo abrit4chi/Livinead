@@ -64,9 +64,4 @@ export class PlayerWeaponSound {
             }
         }
     }
-
-    hitSound()
-    {
-        this.audioManager.playSound('hitGlock');
-    }
 }
