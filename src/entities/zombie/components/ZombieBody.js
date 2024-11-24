@@ -14,7 +14,7 @@ export class ZombieBody {
     {
         this.body = new this.CANNON.Body({
             mass: 0,
-            shape: new this.CANNON.Box(new this.CANNON.Vec3(2, 3, 0.1)),
+            shape: new this.CANNON.Box(new this.CANNON.Vec3(0.00000001, 3, 0.00000001)),
             position: new this.CANNON.Vec3(0, 0, 10),
             material: new this.CANNON.Material({
                 restitution: 0, 
@@ -23,5 +23,10 @@ export class ZombieBody {
         })
 
         this.world.addBody(this.body);
+    }
+
+    removeZombieBody()
+    {
+        this.world.removeBody(this.body);
     }
 }

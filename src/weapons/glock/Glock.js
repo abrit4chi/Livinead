@@ -12,10 +12,10 @@ export class Glock {
         this.loaderModel = new GLTFLoader();
 
         // Charger les sons
-        this.audioManager.loadSound('aimGlock', '../../../../assets/sounds/weapons/glock/aim.mp3', false, false, 0.02, 1);
-        this.audioManager.loadSound('reloadGlock', '../../../../assets/sounds/weapons/glock/reload.mp3', false, false, 0.1, 1.1);
-        this.audioManager.loadSound('shootGlock', '../../../../assets/sounds/weapons/glock/shoot.mp3', false, false, 0.10, 0.9);
-        this.audioManager.loadSound('hitGlock', '../../../../assets/sounds/weapons/hitmarker.mp3', false, false, 4, 1);
+        this.audioManager.loadSound('aimGlock', '../../../../../assets/sounds/weapons/glock/aim.mp3', false, false, 0.02, 1);
+        this.audioManager.loadSound('reloadGlock', '../../../../../assets/sounds/weapons/glock/reload.mp3', false, false, 0.1, 1.1);
+        this.audioManager.loadSound('shootGlock', '../../../../../assets/sounds/weapons/glock/shoot.mp3', false, false, 0.10, 0.9);
+        this.audioManager.loadSound('hitGlock', '../../../../../assets/sounds/weapons/hitmarker.mp3', false, false, 4, 1);
 
         // Propriété(s)
         this.sounds = {
@@ -24,8 +24,9 @@ export class Glock {
             2: 'reloadGlock',
             3: 'hitGlock'
         };
-        this.idlePositionData = [-0.2, -0.3, -0.35]
-        this.aimPositionData = [-0.366, -0.2185, -0.30]
+        this.idlePositionData = [-0.2, -0.3, -0.35];
+        this.aimPositionData = [-0.366, -0.2185, -0.30];
+        this.fireRate = 500;
     }
     
     loadWeaponModel()

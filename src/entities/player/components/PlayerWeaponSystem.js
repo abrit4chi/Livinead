@@ -8,6 +8,7 @@ export class PlayerWeaponSystem {
 
         // Drapeau(x)
         this.shootFlag = false;
+        this.hitFlag = false;
     }
 
     update()
@@ -23,16 +24,13 @@ export class PlayerWeaponSystem {
         {
             if (animation.isRunning())
             {
-                if (this.lastShotTime === undefined || Date.now() - this.lastShotTime > 500) 
+                if (this.lastShotTime === undefined || Date.now() - this.lastShotTime > this.playerWeapon.currentWeapon.fireRate) 
                 {
                     // Si c'est le zombie
-                    if (this.playerWeapon.player.playerRaycast.getTargetRaycast() == "Zombie_Cylinder")
+                    if (this.playerWeapon.player.playerRaycast.getTargetRaycast() == "Character" && this.playerWeapon.player.game.zombie.zombieHealth.health > 0)
                     {
-                        // Créer le hitmarker
+                        this.hitFlag = true;
                         this.playerWeapon.createHitCrosshair();
-
-                        // Jouer le son du hitmarker
-                        this.audioManager.playSound(this.playerWeapon.currentWeapon.sounds[3]);
                     }
 
                     this.lastShotTime = Date.now();

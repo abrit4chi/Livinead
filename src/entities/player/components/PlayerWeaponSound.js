@@ -15,6 +15,7 @@ export class PlayerWeaponSound {
         this.aimSound();
         this.shootSound();
         this.reloadSound();
+        this.hitSound();
     }
 
     aimSound()
@@ -61,6 +62,18 @@ export class PlayerWeaponSound {
             else 
             {
                 this.audioManager.stopSound(this.weapon.sounds[2]);
+            }
+        }
+    }
+
+    hitSound()
+    {
+        if (this.playerWeapon.playerWeaponSystem)
+        {
+            if (this.playerWeapon.playerWeaponSystem.hitFlag)
+            {
+                this.audioManager.playSound(this.weapon.sounds[3]);
+                this.playerWeapon.playerWeaponSystem.hitFlag = false;
             }
         }
     }

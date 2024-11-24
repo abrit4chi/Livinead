@@ -5,6 +5,7 @@ export class ZombieAnimation {
     {
         // Propriété(s) de l'instance
         this.zombie = zombie;
+        this.playerWeaponSystem = zombie.game.player.playerWeapon.playerWeaponSystem;
         this.THREE = this.zombie.game.THREE;
 
         // Propriété(s)
@@ -19,6 +20,7 @@ export class ZombieAnimation {
     {
         this.updateMixer();
         this.idleAnimation();
+        this.deathAnimation();
     }
 
     loadAnimations(animations)
@@ -41,7 +43,23 @@ export class ZombieAnimation {
 
     idleAnimation() 
     {    
-        const animation = this.animations['Zombie|ZombieIdle'];
+        const animation = this.animations['Armature|Idle'];
         animation.play();
+    }
+
+    deathAnimation()
+    {
+        const animation = this.animations['Armature|Die'];
+
+        if (this.zombie.zombieHealth.health == 0)
+        {
+            animation.setLoop(this.THREE.LoopOnce);
+            animation.clampWhenFinished = true; // Garde la dernière image affichée
+            animation.play();
+
+            if (animation.time >= animation.getClip().duration - 1) {
+                this.zombie.removeZombie();
+            }
+        }
     }
 }

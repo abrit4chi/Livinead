@@ -15,7 +15,7 @@ export class PlayerBody {
         this.body = new this.CANNON.Body({
             mass: 1,
             shape: new this.CANNON.Sphere(1),
-            position: new this.CANNON.Vec3(0, 5, 15),
+            position: new this.CANNON.Vec3(0, 1, 15),
             material: new this.CANNON.Material({
                 restitution: 0,
                 friction: 0 

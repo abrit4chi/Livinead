@@ -1,4 +1,5 @@
-import { Glock } from '../../../weapons/glock/glock/Glock';
+import { Glock } from '../../../weapons/glock/Glock';
+import { Akm } from '../../../weapons/akm/Akm';
 import { PlayerWeaponAnimation } from './PlayerWeaponAnimation';
 import { PlayerWeaponSound } from './PlayerWeaponSound';
 import { PlayerWeaponSystem } from './PlayerWeaponSystem';
@@ -10,7 +11,8 @@ export class PlayerWeapon {
         this.player = player;
 
         // Instance(s)
-        this.currentWeapon = new Glock(this);
+        // this.currentWeapon = new Glock(this);
+        this.currentWeapon = new Akm(this);
         this.playerWeaponAnimation = new PlayerWeaponAnimation(this);
         this.playerWeaponSound = new PlayerWeaponSound(this);
         this.playerWeaponSystem = new PlayerWeaponSystem(this);
@@ -32,7 +34,7 @@ export class PlayerWeapon {
 
     createCrosshair()
     {
-        if (!document.querySelector('.crosshair') && !document.querySelector('.hitCrosshair'))
+        if (!document.querySelector('.crosshair'))
         {
             this.crosshair = document.createElement('img');
             this.crosshair.className = 'crosshair';
@@ -53,10 +55,9 @@ export class PlayerWeapon {
     {
         if (!document.querySelector('.hitCrosshair'))
         {
-            this.removeCrosshair();
             this.hitCrosshair = document.createElement('img');
             this.hitCrosshair.className = 'hitCrosshair';
-            this.hitCrosshair.src = './assets/images/hitCrosshair.png';
+            this.hitCrosshair.src = './assets/images/hitCrosshair1.png';
             document.body.appendChild(this.hitCrosshair);
         }
 
