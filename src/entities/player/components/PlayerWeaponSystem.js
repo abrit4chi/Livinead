@@ -27,7 +27,7 @@ export class PlayerWeaponSystem {
                 if (this.lastShotTime === undefined || Date.now() - this.lastShotTime > this.playerWeapon.currentWeapon.fireRate) 
                 {
                     // Si c'est le zombie
-                    if (this.playerWeapon.player.playerRaycast.getTargetRaycast() == "Character" && this.playerWeapon.player.game.zombie.zombieHealth.health > 0)
+                    if (this.playerWeapon.player.playerRaycast.getTargetRaycast() == "Zombie_Cylinder" && this.playerWeapon.player.game.zombie.zombieHealth.health > 0)
                     {
                         this.hitFlag = true;
                         this.playerWeapon.createHitCrosshair();

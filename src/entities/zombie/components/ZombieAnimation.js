@@ -19,7 +19,7 @@ export class ZombieAnimation {
     update()
     {
         this.updateMixer();
-        this.idleAnimation();
+        this.moveAnimation();
         this.deathAnimation();
     }
 
@@ -41,25 +41,22 @@ export class ZombieAnimation {
         }
     }
 
-    idleAnimation() 
+    moveAnimation() 
     {    
-        const animation = this.animations['Armature|Idle'];
+        const animation = this.animations['Zombie|ZombieRun'];
         animation.play();
     }
 
     deathAnimation()
     {
-        const animation = this.animations['Armature|Die'];
+        const animation = this.animations['Zombie|ZombieCrawl'];
 
         if (this.zombie.zombieHealth.health == 0)
         {
             animation.setLoop(this.THREE.LoopOnce);
             animation.clampWhenFinished = true; // Garde la dernière image affichée
             animation.play();
-
-            if (animation.time >= animation.getClip().duration - 1) {
-                this.zombie.removeZombie();
-            }
+            this.zombie.removeZombie();
         }
     }
 }

@@ -27,11 +27,11 @@ export class Zombie {
     
     loadZombieModel()
     {
-        this.loaderModel.load('../../../assets/models/entities/zombie/zombie1.glb', (gltf) => {
+        this.loaderModel.load('../../../assets/models/entities/zombie/zombie.glb', (gltf) => {
             this.zombie = gltf.scene;
             
             // Echelle et position du zombie
-            this.zombie.scale.set(0.3, 0.3, 0.3);
+            this.zombie.scale.set(0.2, 0.2, 0.2);
             this.zombie.position.set(1, 0, 2);
             
             // L'ajouter à la scène
